@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+
+<head>
+   <meta charset="UTF-8">
+
+
+   <meta name="viewport"
+         content="width=device-width, initial-scale=1.0">
+
+
+   <title>Cultura Síria</title>
+
+
+   <style>
+
+
+       :root {
+    --tema: claro;
+
+    --fundo: if(
+        style(--tema: escuro): #191C22;
+        else: #F8F1E5
+    );
+
+    --superficie: if(
+        style(--tema: escuro): #252A32;
+        else: #FFFFFF
+    );
+
+    --texto: if(
+        style(--tema: escuro): #F5EBDD;
+        else: #35291F
+    );
+
+    --texto-secundario: if(
+        style(--tema: escuro): #D0C2B0;
+        else: #6B5B4D
+    );
+
+    --primaria: if(
+        style(--tema: escuro): #E5A078;
+        else: #A8432D
+    );
+
+    --primaria-forte: if(
+        style(--tema: escuro): #8C422F;
+        else: #75402F
+    );
+
+    --borda: if(
+        style(--tema: escuro): #414650;
+        else: #E5D5C2
+    );
+
+    --sombra: if(
+        style(--tema: escuro): 0 5px 18px rgba(0, 0, 0, 0.35);
+        else: 0 5px 18px rgba(77, 48, 30, 0.12)
+    );
+}
+
+    /* Texto do botão conforme o tema ativo */
+
+    .texto-tema-claro {
+        display: none;
+    }
+
+    :root:has(#alternar-tema:checked) .texto-tema-escuro {
+        display: none;
+    }
+
+    :root:has(#alternar-tema:checked) .texto-tema-claro {
+        display: inline;
+    }
+
+
+
+
+       /* =========================
+          CONFIGURAÇÕES GERAIS
+       ========================== */
+
+
+       * {
+           box-sizing: border-box;
+       }
+
+
+       html {
+           scroll-behavior: smooth;
+       }
+
+
+       body {
+           margin: 0;
+
+
+           font-family: Arial, Helvetica, sans-serif;
+
+
+           background-color: var(--fundo);
+           color: var(--texto);
+
+
+           line-height: 1.6;
+
+
+           transition:
+               background-color 0.3s,
+               color 0.3s;
+       }
+
+
+       a {
+           color: inherit;
+       }
+
+
+
+
+       /* =========================
+          HEADER
+       ========================== */
+
+
+       header {
+           background-color: var(--superficie);
+
+
+           border-bottom: 1px solid var(--borda);
+
+
+           padding: 25px;
+
+
+           text-align: center;
+       }
+
+
+       header h1 {
+           margin: 0;
+
+
+           color: var(--primaria);
+       }
+
+
+       header p {
+           margin-bottom: 0;
+
+
+           color: var(--texto-secundario);
+       }
+
+
+
+
+       /* =========================
+          NAV
+       ========================== */
+
+
+       nav {
+           background-color: var(--primaria-forte);
+
+
+           padding: 12px 20px;
+
+
+           display: flex;
+           justify-content: center;
+           align-items: center;
+
+
+           flex-wrap: wrap;
+
+
+           gap: 20px;
+       }
+
+
+       nav a {
+           color: white;
+
+
+           text-decoration: none;
+
+
+           font-weight: bold;
+       }
+
+
+       nav a:hover {
+           text-decoration: underline;
+       }
+
+
+
+
+       /* =========================
+          BOTÃO DO TEMA
+       ========================== */
+
+
+       .botao-tema {
+           padding: 8px 16px;
+
+
+           border: 2px solid white;
+           border-radius: 20px;
+
+
+           background-color: transparent;
+           color: white;
+
+
+           font-size: 15px;
+
+
+           cursor: pointer;
+       }
+
+       #alternar-tema {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        #alternar-tema:focus-visible + .botao-tema {
+            outline: 2px solid white;
+            outline-offset: 4px;
+        }
+
+
+       .botao-tema:hover {
+           background-color: white;
+           color: var(--primaria-forte);
+       }
+
+       /* =========================
+            ALTERNÂNCIA DOS TEMAS
+        ========================== */
+
+        :root:has(#alternar-tema:checked) {
+            --tema: escuro;
+        }
+
+
+
+       /* =========================
+          CONTEÚDO PRINCIPAL
+       ========================== */
+
+
+       main {
+           width: min(1100px, 90%);
+
+
+           margin: 40px auto;
+       }
+
+
+
+
+       /* =========================
+          HERO / INTRODUÇÃO
+       ========================== */
+
+
+       .introducao {
+           background-color: var(--superficie);
+
+
+           padding: 35px;
+
+
+           border: 1px solid var(--borda);
+           border-radius: 12px;
+
+
+           margin-bottom: 40px;
+
+
+           box-shadow: var(--sombra);
+       }
+
+
+       .introducao h2 {
+           color: var(--primaria);
+
+
+           margin-top: 0;
+       }
+
+
+
+
+       /* =========================
+          SEÇÃO DE CARDS
+       ========================== */
+
+
+       .secao-cards h2 {
+           color: var(--primaria);
+
+
+           text-align: center;
+
+
+           margin-bottom: 30px;
+       }
+
+
+       .cards {
+           display: grid;
+
+
+           grid-template-columns:
+               repeat(auto-fit, minmax(250px, 1fr));
+
+
+           gap: 25px;
+       }
+
+
+
+
+       /* =========================
+          CARD
+       ========================== */
+
+
+       .card {
+           background-color: var(--superficie);
+
+
+           border: 1px solid var(--borda);
+           border-radius: 12px;
+
+
+           overflow: hidden;
+
+
+           box-shadow: var(--sombra);
+
+
+           transition:
+               transform 0.2s,
+               background-color 0.3s;
+       }
+
+
+       .card:hover {
+           transform: translateY(-5px);
+       }
+
+
+       .card img {
+           display: block;
+
+
+           width: 100%;
+           height: 220px;
+
+
+           object-fit: cover;
+       }
+
+
+       .card-conteudo {
+           padding: 20px;
+       }
+
+
+       .card h3 {
+           margin-top: 0;
+
+
+           color: var(--primaria);
+       }
+
+
+       .card p {
+           color: var(--texto-secundario);
+       }
+
+
+
+
+       /* =========================
+          SEÇÃO SOBRE
+       ========================== */
+
+
+       .sobre {
+           background-color: var(--superficie);
+
+
+           border: 1px solid var(--borda);
+           border-radius: 12px;
+
+
+           padding: 30px;
+
+
+           margin-top: 40px;
+       }
+
+
+       .sobre h2 {
+           color: var(--primaria);
+
+
+           margin-top: 0;
+       }
+
+
+
+
+       /* =========================
+          FOOTER
+       ========================== */
+
+
+       footer {
+           margin-top: 50px;
+
+
+           padding: 30px;
+
+
+           text-align: center;
+
+
+           background-color: var(--primaria-forte);
+           color: white;
+       }
+
+
+       footer p {
+           margin: 5px;
+       }
+
+
+   </style>
+
+
+</head>
+
+
+
+
+<body>
+
+
+
+
+   <!-- =========================
+        CABEÇALHO
+   ========================== -->
+
+
+   <header id="inicio">
+
+
+       <h1>Cultura Síria</h1>
+
+
+       <p>
+           História, gastronomia e tradições de um país do Oriente Médio.
+       </p>
+
+
+   </header>
+
+
+
+
+   <!-- =========================
+        NAVEGAÇÃO
+   ========================== -->
+
+
+   <nav>
+
+
+       <a href="#historia">História</a>
+
+
+       <a href="#gastronomia">Gastronomia</a>
+
+
+       <a href="#arquitetura">Arquitetura</a>
+
+
+
+
+       <input type="checkbox" id="alternar-tema">
+
+        <label for="alternar-tema" class="botao-tema">
+        <span class="texto-tema-escuro">🌙 Tema escuro</span>
+        <span class="texto-tema-claro">☀️ Tema claro</span>
+    </label>
+
+
+   </nav>
+
+
+
+
+   <!-- =========================
+        CONTEÚDO PRINCIPAL
+   ========================== -->
+
+
+   <main>
+
+
+
+
+       <!-- INTRODUÇÃO -->
+
+
+       <section id="historia" class="introducao">
+
+
+           <h2>Conheça a Síria</h2>
+
+
+           <p>
+               A Síria é um país do Oriente Médio com uma história 
+               milenar, marcada por antigas civilizações, cidades
+               históricas e tradições culturais.
+           </p>
+
+
+           <p>
+                Sua cultura se destaca pela gastronomia, pela
+                arquitetura, pelo artesanato e pela hospitalidade
+                de seu povo, que preserva costumes transmitidos
+                entre gerações.
+           </p>
+
+
+       </section>
+
+
+
+
+       <!-- CARDS -->
+
+
+       <section
+           id="gastronomia"
+           class="secao-cards">
+
+
+           <h2>Tradições e Sabores</h2>
+
+
+
+
+           <div class="cards">
+
+
+
+
+               <!-- CARD 1 -->
+
+
+               <article class="card">
+
+
+                   <img
+                       src="https://uploads.onecompiler.io/44qrrc5qp/4566m6qvq/604882-900x442-1.jpeg"
+                       alt="Pratos tradicionais da gastronomia síria">
+
+
+
+
+                   <div class="card-conteudo">
+
+
+                       <h3>Gastronomia Síria</h3>
+
+
+                       <p>
+                           A gastronomia síria reúne sabores e aromas marcantes.
+                           Pratos como quibe, homus, falafel e tabule fazem parte
+                           dessa tradição, que valoriza especiarias, ingredientes
+                           frescos e refeições compartilhadas em família.
+                       </p>
+
+
+                   </div>
+
+
+               </article>
+
+
+
+
+               <!-- CARD 2 -->
+
+
+               <article class="card">
+
+
+                   <img
+                       src="https://uploads.onecompiler.io/44qrrc5qp/4566m6qvq/istockphoto-506598676-170667a.jpg"
+                       alt="Rua histórica na cidade de Damasco">
+
+
+
+
+                   <div class="card-conteudo">
+
+
+                       <h3>História de Damasco</h3>
+
+
+                       <p>
+                           Damasco é uma das cidades históricas mais antigas
+                           do mundo. Seus mercados tradicionais, monumentos
+                           e ruas antigas revelam a riqueza cultural da Síria
+                           e a influência de diferentes civilizações ao longo
+                           dos séculos.
+                       </p>
+
+
+                   </div>
+
+
+               </article>
+
+
+
+
+               <!-- CARD 3 -->
+
+
+               <article class="card">
+
+
+                   <img
+                       src="https://uploads.onecompiler.io/44qrrc5qp/4566m6qvq/765e76_2c0ff353cb2c4a61b9016a1d8feecc21~mv2.avif"
+                       alt="Detalhes da arquitetura tradicional síria">
+
+
+
+
+                   <div class="card-conteudo">
+
+
+                       <h3>Arquitetura Síria</h3>
+
+
+                       <p>
+                           A arquitetura síria reúne arcos, mosaicos,
+                           pátios internos e detalhes ornamentais.
+                           Construções históricas de cidades como Damasco
+                           e Aleppo revelam a influência de diferentes
+                           povos e períodos históricos.
+                       </p>
+
+
+                   </div>
+
+
+               </article>
+
+
+
+
+           </div>
+
+
+       </section>
+
+
+
+
+       <!-- SOBRE -->
+
+
+       <section
+           id="arquitetura"
+           class="sobre">
+
+
+           <h2>Um Legado Milenar</h2>
+
+
+           <p>
+               A cultura síria também se expressa na música,
+               na literatura, nos bordados e no artesanato.
+               Essas tradições ajudam a preservar a memória
+               e a identidade cultural de diferentes comunidades.
+           </p>
+
+
+           <p>
+               Conhecer a Síria é descobrir um patrimônio
+               histórico e cultural marcado pela diversidade,
+               pelas tradições familiares e pela riqueza de
+               costumes transmitidos entre gerações.
+           </p>
+
+
+       </section>
+
+
+
+
+   </main>
+
+
+
+
+   <!-- =========================
+        RODAPÉ
+   ========================== -->
+
+
+   <footer>
+
+
+       <p>
+           &copy; 2026 Cultura Síria
+       </p>
+
+
+       <p>
+           História, sabores e patrimônio de um povo.
+       </p>
+
+
+   </footer>
+
+
+
+
+
+
+
+
+</body>
+
+
+</html>
